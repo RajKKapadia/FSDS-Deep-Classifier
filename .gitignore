@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local folders
+artifacts/
+
+# Logs
+logs/
