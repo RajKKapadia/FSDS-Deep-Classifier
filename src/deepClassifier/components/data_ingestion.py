@@ -1,11 +1,15 @@
 import os
+from pathlib import Path
+
+
 import urllib.request as request
+from tqdm import tqdm
 from zipfile import ZipFile
+
+
 from deepClassifier.entity import DataIngestionConfig
 from deepClassifier import logger
 from deepClassifier.utils import get_size
-from tqdm import tqdm
-from pathlib import Path
 
 
 class DataIngestion:
