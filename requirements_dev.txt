@@ -10,6 +10,7 @@ pyYAML
 tqdm
 ensure
 joblib
+types-PyYAML
 -e .
 
 ## Dev requirements
