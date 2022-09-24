@@ -1,45 +1,45 @@
 schema: '2.0'
 stages:
   data_ingestion:
-    cmd: python src\deepClassifier\pipeline\stage_01_data_ingestion.py
+    cmd: python src/deepClassifier/pipeline/stage_01_data_ingestion.py
     deps:
-    - path: configs\config.yaml
+    - path: configs/config.yaml
       md5: 57bc8b02ce1a5ae6bfa77106835351af
       size: 823
-    - path: src\deepClassifier\pipeline\stage_01_data_ingestion.py
+    - path: src/deepClassifier/pipeline/stage_01_data_ingestion.py
       md5: f172a70cf599c77bbef01c290e2c9f6c
       size: 717
     outs:
-    - path: artifacts\data_ingestion\PetImages
+    - path: artifacts/data_ingestion/PetImages
       md5: 3a5cf86541f22c236620ce5b952ad684.dir
       size: 848866410
       nfiles: 24998
   prepare_base_model:
-    cmd: python src\deepClassifier\pipeline\stage_02_prepare_base_model.py
+    cmd: python src/deepClassifier/pipeline/stage_02_prepare_base_model.py
     deps:
-    - path: src\deepClassifier\pipeline\stage_02_prepare_base_model.py
+    - path: src/deepClassifier/pipeline/stage_02_prepare_base_model.py
       md5: 83d69227136b7cc0a14e1dd79a337d1e
       size: 754
     outs:
-    - path: artifacts\prepare_base_model\base_model.h5
+    - path: artifacts/prepare_base_model/base_model.h5
       md5: 7cdfab03f7539cf0f4ac2521153e7aa3
       size: 58920408
-    - path: artifacts\prepare_base_model\base_model_updated.h5
-      md5: ec22459e360e8d53dc5278641d166854
+    - path: artifacts/prepare_base_model/base_model_updated.h5
+      md5: 2b11c5273dad9f2b337d817331cd2208
       size: 59132960
   train_model:
-    cmd: python src\deepClassifier\pipeline\stage_03_training.py
+    cmd: python src/deepClassifier/pipeline/stage_03_training.py
     deps:
-    - path: artifacts\prepare_base_model\base_model.h5
+    - path: artifacts/prepare_base_model/base_model.h5
       md5: 7cdfab03f7539cf0f4ac2521153e7aa3
       size: 58920408
     - path: params.yaml
       md5: b603b0dad2f124c742362347ea27d9bd
       size: 144
-    - path: src\deepClassifier\pipeline\stage_03_training.py
+    - path: src/deepClassifier/pipeline/stage_03_training.py
       md5: 1e8b581a108aaa7526d3a8dd3366c93f
       size: 963
     outs:
-    - path: artifacts\training\model.h5
-      md5: a0846548d9755138298d4dd57de8300e
+    - path: artifacts/training/model.h5
+      md5: 79fad467e62a066e1274864a09470e6c
       size: 59135136
