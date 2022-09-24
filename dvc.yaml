@@ -1,23 +1,23 @@
 stages:
   data_ingestion:
-    cmd: python src\deepClassifier\pipeline\stage_01_data_ingestion.py
+    cmd: python src/deepClassifier/pipeline/stage_01_data_ingestion.py
     deps:
-      - src\deepClassifier\pipeline\stage_01_data_ingestion.py
-      - configs\config.yaml
+      - src/deepClassifier/pipeline/stage_01_data_ingestion.py
+      - configs/config.yaml
     outs:
-      - artifacts\data_ingestion\PetImages
+      - artifacts/data_ingestion/PetImages
   prepare_base_model:
-    cmd: python src\deepClassifier\pipeline\stage_02_prepare_base_model.py
+    cmd: python src/deepClassifier/pipeline/stage_02_prepare_base_model.py
     deps:
-      - src\deepClassifier\pipeline\stage_02_prepare_base_model.py
+      - src/deepClassifier/pipeline/stage_02_prepare_base_model.py
     outs:
-      - artifacts\prepare_base_model\base_model_updated.h5
-      - artifacts\prepare_base_model\base_model.h5
+      - artifacts/prepare_base_model/base_model_updated.h5
+      - artifacts/prepare_base_model/base_model.h5
   train_model:
-    cmd: python src\deepClassifier\pipeline\stage_03_training.py
+    cmd: python src/deepClassifier/pipeline/stage_03_training.py
     deps:
-      - src\deepClassifier\pipeline\stage_03_training.py
-      - artifacts\prepare_base_model\base_model.h5
+      - src/deepClassifier/pipeline/stage_03_training.py
+      - artifacts/prepare_base_model/base_model.h5
       - params.yaml
     outs:
-      - artifacts\training\model.h5
+      - artifacts/training/model.h5
