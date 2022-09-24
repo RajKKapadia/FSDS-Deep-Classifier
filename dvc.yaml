@@ -10,6 +10,12 @@ stages:
     cmd: python src/deepClassifier/pipeline/stage_02_prepare_base_model.py
     deps:
       - src/deepClassifier/pipeline/stage_02_prepare_base_model.py
+    params:
+      - IMAGE_SIZE
+      - INCLUDE_TOP
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
     outs:
       - artifacts/prepare_base_model/base_model_updated.h5
       - artifacts/prepare_base_model/base_model.h5
@@ -19,5 +25,10 @@ stages:
       - src/deepClassifier/pipeline/stage_03_training.py
       - artifacts/prepare_base_model/base_model.h5
       - params.yaml
+    params:
+      - IMAGE_SIZE
+      - EPOCHS
+      - BATCH_SIZE
+      - AUGMENTATION
     outs:
       - artifacts/training/model.h5
