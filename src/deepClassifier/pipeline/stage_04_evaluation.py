@@ -1,15 +1,16 @@
 from deepClassifier.config import ConfigurationManager
-from deepClassifier.components import PrepareBaseModel
+from deepClassifier.components import Evaluation
 from deepClassifier import logger
 
-STAGE_NAME = "Prepare base model"
+STAGE_NAME = "Evaluation of the model"
 
 def main():
     config = ConfigurationManager()
-    prepare_base_model_config = config.get_prepare_base_model_config()
-    prepare_base_model = PrepareBaseModel(config=prepare_base_model_config)
-    prepare_base_model.get_base_model()
-    prepare_base_model.update_base_model()
+    evaluation_config = config.get_evaluation_config()
+    evaluation = Evaluation(evaluation_config)
+    evaluation.load_model()
+    evaluation.evaluate()
+    
 
 if __name__ == '__main__':
     try:

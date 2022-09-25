@@ -7,7 +7,8 @@ from deepClassifier.entity import (
     DataIngestionConfig,
     PrepareBaseModelConfig,
     PrepareCallbacksConfig,
-    TrainingConfig
+    TrainingConfig,
+    EvaluationConfig
 )
 
 class ConfigurationManager:
@@ -91,3 +92,14 @@ class ConfigurationManager:
         )
 
         return training_config
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, 'PetImages')
+        evaluation_config = EvaluationConfig(
+            trained_mdeol_path=self.config.training.trained_model_path,
+            training_data=training_data,
+            params_batch_size=self.params.BATCH_SIZE,
+            params_image_size=self.params.IMAGE_SIZE
+        )
+
+        return evaluation_config

@@ -2,7 +2,7 @@ from deepClassifier.config import ConfigurationManager
 from deepClassifier.components import DataIngestion
 from deepClassifier import logger
 
-STAGE_NAME = "Data Ingestion stage"
+STAGE_NAME = "Data Ingestion"
 
 def main():
     config = ConfigurationManager()
