@@ -30,7 +30,7 @@ stages:
       - src/deepClassifier/components/prepare_callbacks.py
       - artifacts/prepare_base_model/base_model.h5
       - artifacts/data_ingestion/PetImages
-      - params.yaml
+      - configs/config.yaml
     params:
       - IMAGE_SIZE
       - EPOCHS
@@ -38,3 +38,17 @@ stages:
       - AUGMENTATION
     outs:
       - artifacts/training/model.h5
+
+  evalueate_model:
+    cmd: python src\deepClassifier\pipeline\stage_04_evaluation.py
+    deps:
+      - src\deepClassifier\pipeline\stage_04_evaluation.py
+      - artifacts/data_ingestion/PetImages
+      - artifacts/training/model.h5
+      - configs/config.yaml
+    params:
+      - IMAGE_SIZE
+      - BATCH_SIZE
+    metrics:
+    - score.json:
+        cache: false
