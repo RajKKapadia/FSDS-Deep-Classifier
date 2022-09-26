@@ -12,6 +12,7 @@ ensure
 joblib
 types-PyYAML
 scipy
+mlflow
 -e .
 
 ## Dev requirements
