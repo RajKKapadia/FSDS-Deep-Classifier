@@ -133,3 +133,7 @@ artifacts/
 
 # Logs
 logs/
+
+# ML FLOW Secrets
+research/secret.json
+mlruns/
